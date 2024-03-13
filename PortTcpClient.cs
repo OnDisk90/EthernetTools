@@ -74,10 +74,12 @@ namespace SerialLib
             catch (System.Security.SecurityException ex)
             {
                 SetLastError(PortErrors.PERMISSION_ERROR, ex.Message);
+                _connected = false;
             }
             catch (Exception ex)
             {
                 SetLastError(PortErrors.CONNECT_ERROR, ex.Message);
+                _connected = false;
             }
 
             return GetLastError(out Status);
@@ -133,7 +135,8 @@ namespace SerialLib
                 }
                 catch (Exception ex)
                 {
-                     SetLastError(PortErrors.SEND_ERROR , ex.Message);
+                    _connected = false;
+                    SetLastError(PortErrors.SEND_ERROR , ex.Message);
                 }
 
             }
@@ -162,6 +165,7 @@ namespace SerialLib
             catch (Exception ex)
             {
                 SetLastError(PortErrors.CONNECT_ERROR_2 , ex.Message);
+                _connected = false;
             }
             // Raise the end of connection event.
             // The Connect function above can now return safely.
@@ -217,6 +221,7 @@ namespace SerialLib
                 else
                 {
                     SetLastError(PortErrors.RX_ERROR , "Recieved corrupted data.");
+                    _connected = false;
                 }
                
 
@@ -224,10 +229,12 @@ namespace SerialLib
             catch (ObjectDisposedException ex)
             {
                 SetLastError(PortErrors.RX_ERROR , ex.Message);
+                _connected = false;
             }
             catch (Exception ex)
             {
                 SetLastError(PortErrors.RX_ERROR, ex.Message);
+                _connected = false;
             }
         }
 

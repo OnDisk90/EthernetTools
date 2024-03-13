@@ -79,7 +79,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="onnew.cs" />
+    <Compile Include="PortAbstraction.cs" />
     <Compile Include="PortTcpClient.cs" />
     <Compile Include="PortTcpServer.cs" />
     <Compile Include="PortUdpClient.cs" />

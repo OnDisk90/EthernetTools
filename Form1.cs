@@ -456,6 +456,13 @@ namespace MultiCastSend
                     textBoxTxStatus.Text = "Connect First";
                 }
             }
+            if (_portRx != null)
+            {
+                if (!_portRx.Connected)
+                {
+                    textBoxConnection.Text = "Connect First";
+                }
+            }
         }
         private void chkRxData_Click(object sender, EventArgs e)
         {
